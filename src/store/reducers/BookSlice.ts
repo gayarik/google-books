@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Book } from "../../types/types";
+import { Book, Items } from "../../types/types";
 import { fetchBooks } from "./ActionsCreators";
 
 interface BookState {
@@ -8,6 +8,8 @@ interface BookState {
    idBook: string;
    error: string;
    value: string;
+   amount: number;
+   startIndex: number;
 }
 
 const initialState: BookState = {
@@ -16,34 +18,28 @@ const initialState: BookState = {
    idBook: '',
    error: '',
    value: '',
+   amount: 0,
+   startIndex: 0,
 }
 
 export const bookSlice = createSlice({
    name: 'book',
    initialState,
    reducers: {
-      booksFetching(state) {
-         state.loader = true;
-      },
-      booksFetchingSuccess(state, action: PayloadAction<Book[]>) {
-         state.loader = false;
-         state.error = '';
-         state.books = action.payload;
-      },
-      booksFetchingError(state, action: PayloadAction<string>) {
-         state.loader = false;
-         state.error = action.payload;
-      },
       changeInputValue(state, action: PayloadAction<string>) {
          state.value = action.payload;
+      },
+      setStartIndex(state, action: PayloadAction<number>) {
+         state.startIndex = action.payload;
       },
    },
    extraReducers: (builder) => {
       builder
-         .addCase(fetchBooks.fulfilled, (state: any, action: PayloadAction<Book[]>) => {
+         .addCase(fetchBooks.fulfilled, (state: any, action: PayloadAction<Items>) => {
             state.loader = false;
             state.error = '';
-            state.books = action.payload;
+            state.books = state.books.concat(action.payload.items);
+            state.amount = action.payload.totalItems;
          })
          .addCase(fetchBooks.pending, (state: any) => {
             state.loader = true;
@@ -55,4 +51,5 @@ export const bookSlice = createSlice({
    }
 })
 
+export const { changeInputValue, setStartIndex } = bookSlice.actions;
 export default bookSlice.reducer;

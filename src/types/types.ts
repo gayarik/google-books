@@ -4,8 +4,8 @@ export interface Items {
 }
 
 export interface Book {
-   id: string;
    volumeInfo: VolumeInfo;
+   id: string;
 }
 
 export interface VolumeInfo {

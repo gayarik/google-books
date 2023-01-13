@@ -3,7 +3,6 @@ import { Book } from "../types/types";
 const Card = (book: Book) => {
    return (
       <div className="bg-zinc-800 p-3 mb-5">
-
          <div className="flex justify-center" style={{ minHeight: '180px' }}>
             <img src={book.volumeInfo.imageLinks.thumbnail} alt="Image" />
          </div>
