@@ -1,10 +1,24 @@
+import { useAppDispatch } from "../hooks/redux";
+import { setSelectedCard } from "../store/reducers/BookSlice";
 import { Book } from "../types/types";
 
 const Card = (book: Book) => {
+
+   const dispatch = useAppDispatch();
+
    return (
-      <div className="bg-zinc-800 p-3 mb-5">
+      <div
+         className="bg-zinc-800 p-3 mb-5"
+         onClick={() => {
+            dispatch(setSelectedCard(book));
+         }}
+      >
          <div className="flex justify-center" style={{ minHeight: '180px' }}>
-            <img src={book.volumeInfo.imageLinks.thumbnail} alt="Image" />
+            {book.volumeInfo.imageLinks ? (
+               <img src={book.volumeInfo.imageLinks.thumbnail} alt="Book" />
+            ) : (
+               false
+            )}
          </div>
          <div className="text-neutral-500 pt-4">{book.volumeInfo.categories}</div>
          <div className="text-neutral-300">{book.volumeInfo.title}</div>

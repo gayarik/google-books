@@ -5,21 +5,21 @@ import { fetchBooks } from "./ActionsCreators";
 interface BookState {
    books: Book[];
    loader: boolean;
-   idBook: string;
    error: string;
    value: string;
    amount: number;
    startIndex: number;
+   selectedCard: Book | null;
 }
 
 const initialState: BookState = {
    books: [],
    loader: false,
-   idBook: '',
    error: '',
    value: '',
    amount: 0,
    startIndex: 0,
+   selectedCard: null,
 }
 
 export const bookSlice = createSlice({
@@ -32,6 +32,9 @@ export const bookSlice = createSlice({
       setStartIndex(state, action: PayloadAction<number>) {
          state.startIndex = action.payload;
       },
+      setSelectedCard(state, action: PayloadAction<Book | null>) {
+         state.selectedCard = action.payload;
+      },
    },
    extraReducers: (builder) => {
       builder
@@ -43,6 +46,7 @@ export const bookSlice = createSlice({
          })
          .addCase(fetchBooks.pending, (state: any) => {
             state.loader = true;
+            state.error = '';
          })
          .addCase(fetchBooks.rejected, (state: any, action: PayloadAction<any>) => {
             state.loader = false;
@@ -51,5 +55,5 @@ export const bookSlice = createSlice({
    }
 })
 
-export const { changeInputValue, setStartIndex } = bookSlice.actions;
+export const { changeInputValue, setStartIndex, setSelectedCard } = bookSlice.actions;
 export default bookSlice.reducer;

@@ -15,15 +15,15 @@ const Header = () => {
 
    const handleSearch = (e: any) => {
       setTimeout(() => {
-         dispatch(setStartIndex(startIndex + 20));
          dispatch(fetchBooks({ value, startIndex }));
+         dispatch(setStartIndex(startIndex + 20))
       }, 1000)
    }
 
    const handleKeySearch = (e: any) => {
       setTimeout(() => {
          e.key === 'Enter' && dispatch(fetchBooks({ value, startIndex }));
-         dispatch(setStartIndex(startIndex + 20));
+         dispatch(setStartIndex(startIndex + 20))
       }, 1000)
    }
 
@@ -41,7 +41,6 @@ const Header = () => {
                   value={value}
                   onChange={handleChange}
                   onKeyDown={handleKeySearch}
-                  tabIndex={0}
                />
                <button onClick={handleSearch}><BiSearchAlt size='2.5rem' /></button>
             </div>
