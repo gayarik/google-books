@@ -8,17 +8,15 @@ const Card = (book: Book) => {
 
    return (
       <div
-         className="bg-zinc-800 p-3 mb-5"
+         className="bg-zinc-800 p-3 mb-5 cursor-pointer hover:bg-zinc-700 transition-all delay-100 ease-in-out"
          onClick={() => {
             dispatch(setSelectedCard(book));
          }}
       >
          <div className="flex justify-center" style={{ minHeight: '180px' }}>
-            {book.volumeInfo.imageLinks ? (
+            {book.volumeInfo.imageLinks &&
                <img src={book.volumeInfo.imageLinks.thumbnail} alt="Book" />
-            ) : (
-               false
-            )}
+            }
          </div>
          <div className="text-neutral-500 pt-4">{book.volumeInfo.categories}</div>
          <div className="text-neutral-300">{book.volumeInfo.title}</div>

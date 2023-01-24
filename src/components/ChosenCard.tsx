@@ -8,9 +8,11 @@ const ChosenCard = () => {
    const dispatch = useAppDispatch();
 
    return (
-      <div className="bg-zinc-800 p-4 mt-10 flex w-3/5 m-auto">
+      <div className="bg-zinc-800 p-4 mt-10 w-3/5 m-auto flex">
          <div>
-            <img src={selectedCard?.volumeInfo.imageLinks.thumbnail} alt="Book" />
+            {selectedCard?.volumeInfo.imageLinks &&
+               <img src={selectedCard?.volumeInfo.imageLinks.thumbnail} alt="Book" />
+            }
          </div>
          <div className="w-10/12 pl-10">
             <div className="text-neutral-500 pb-2">{selectedCard?.volumeInfo.categories}</div>
@@ -19,7 +21,7 @@ const ChosenCard = () => {
             <div className="text-neutral-300 pt-6">{selectedCard?.volumeInfo.subtitle}</div>
             <div className="text-neutral-300">{selectedCard?.volumeInfo.description}</div>
          </div>
-         <button className="flex justify-end text-red-500" onClick={() => dispatch(setSelectedCard(null))}>
+         <button className="flex text-red-500" onClick={() => dispatch(setSelectedCard(null))}>
             <AiOutlineCloseCircle size="2rem" />
          </button>
       </div>

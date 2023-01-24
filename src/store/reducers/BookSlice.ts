@@ -35,6 +35,10 @@ export const bookSlice = createSlice({
       setSelectedCard(state, action: PayloadAction<Book | null>) {
          state.selectedCard = action.payload;
       },
+      cleanBooks(state: any, action: PayloadAction<any>) {
+         state.books = [];
+         state.startIndex = 0;
+      },
    },
    extraReducers: (builder) => {
       builder
@@ -55,5 +59,5 @@ export const bookSlice = createSlice({
    }
 })
 
-export const { changeInputValue, setStartIndex, setSelectedCard } = bookSlice.actions;
+export const { changeInputValue, setStartIndex, setSelectedCard, cleanBooks } = bookSlice.actions;
 export default bookSlice.reducer;
