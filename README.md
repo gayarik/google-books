@@ -8,7 +8,7 @@ _This project used this technology's: react + redux toolkit + typescript + tailw
 
 ### Main Page
 
-![](https://user-images.githubusercontent.com/71184295/214265500-ce003cd7-6118-4ed0-94ce-06c312659dec.png
+![](https://user-images.githubusercontent.com/71184295/214265500-ce003cd7-6118-4ed0-94ce-06c312659dec.png)
 
 ### Chosen Card
 
