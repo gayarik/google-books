@@ -1,6 +1,6 @@
 # Books searcher
 
-_This project used this technology's: react + redux toolkit + typescript + tailwind_
+_This project used this technology's!: react + redux toolkit + typescript + tailwind_
 
 [open searcher](https://google-books-nine.vercel.app/)
 
